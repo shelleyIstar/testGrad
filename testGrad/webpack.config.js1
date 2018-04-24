@@ -1,0 +1,29 @@
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+module.exports = function (webpackConfig, env) {
+    webpackConfig.devtool = 'cheap-module-source-map';
+    console.log("webpackConfig", webpackConfig)
+    // return webpackConfig;
+ 
+}
+
+// const config = {
+//     entry: path.join(__dirname, 'src/index.js'),
+//     output: {
+//         path: path.resolve(__dirname, 'dist'),
+//         filename: 'bundle.js'
+//     },
+//     module: {
+//         rules: [
+//             { test: /\.css$/, use: 'css-loader' },
+//             { test: /\.less$/, use: 'less-loader' },
+//             { test: /\.txt$/, use: 'raw-loader' }
+//         ]
+//     },
+//     plugins: [
+//         new HtmlWebpackPlugin({ template: './src/index.html' })
+//     ]
+// };
+// module.exports = config;
