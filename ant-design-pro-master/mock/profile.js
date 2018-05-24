@@ -80,7 +80,7 @@ const advancedOperation1 = [
   {
     key: 'op1',
     type: '订购关系生效',
-    name: '曲丽丽',
+    name: '曲丽',
     status: 'agree',
     updatedAt: '2017-10-03  19:23:12',
     memo: '-',

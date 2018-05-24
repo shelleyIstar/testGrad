@@ -9,8 +9,13 @@ export async function queryActivities() {
   return request('/api/activities');
 }
 
+// export async function queryRule(params) {
+//   console.log("!!!")
+//   return request(`/api/rule?${stringify(params)}`);
+// }
+
 export async function queryRule(params) {
-  return request(`/api/rule?${stringify(params)}`);
+  return request(`/list_stu.action?${stringify(params)}`);
 }
 
 export async function removeRule(params) {
@@ -77,3 +82,11 @@ export async function fakeRegister(params) {
 export async function queryNotices() {
   return request('/api/notices');
 }
+
+export async function queryListMajor() {
+  return request('/list_major_dir.action');
+}
+
+// export async function queryRule() {
+//   return request(`/list_stu.action`);
+// }

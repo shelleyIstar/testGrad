@@ -1,21 +1,20 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
-import { Row, Col, Card, Form, Input, Select, Icon, Button, Dropdown, Menu, InputNumber, DatePicker, Modal, message, Divider } from 'antd';
+import { Row, Col, Card, Form, Input, Select, Icon, Button, Dropdown, Menu, InputNumber, DatePicker, Modal, message } from 'antd';
 import StandardTable from '../../components/StandardTable';
 import PageHeaderLayout from '../../layouts/PageHeaderLayout';
-import { Link } from 'dva/router'
-import queryString from 'query-string'
+
 import styles from './TableList.less';
-import moment from 'moment';
+
 const FormItem = Form.Item;
 const { Option } = Select;
 const getValue = obj => Object.keys(obj).map(key => obj[key]).join(',');
 
 @connect(state => ({
-  rule: state.rule,
+  major: state.major,
 }))
 @Form.create()
-export default class TableList extends PureComponent {
+export default class MajorList extends PureComponent {
   state = {
     addInputValue: '',
     modalVisible: false,
@@ -34,17 +33,16 @@ export default class TableList extends PureComponent {
   handleStandardTableChange = (pagination, filtersArg, sorter) => {
     const { dispatch } = this.props;
     const { formValues } = this.state;
-    console.log("pagination", pagination)
+
     const filters = Object.keys(filtersArg).reduce((obj, key) => {
       const newObj = { ...obj };
       newObj[key] = getValue(filtersArg[key]);
       return newObj;
     }, {});
-    var current = pagination.current== 1 ? 0: pagination.current-1
 
     const params = {
-      start: current * pagination.pageSize,
-      count: pagination.pageSize,
+      currentPage: pagination.current,
+      pageSize: pagination.pageSize,
       ...formValues,
       ...filters,
     };
@@ -53,7 +51,7 @@ export default class TableList extends PureComponent {
     }
 
     dispatch({
-      type: 'rule/fetch',
+      type: 'major/fetch',
       payload: params,
     });
   }
@@ -65,7 +63,7 @@ export default class TableList extends PureComponent {
       formValues: {},
     });
     dispatch({
-      type: 'rule/fetch',
+      type: 'major/fetch',
       payload: {},
     });
   }
@@ -73,6 +71,37 @@ export default class TableList extends PureComponent {
   toggleForm = () => {
     this.setState({
       expandForm: !this.state.expandForm,
+    });
+  }
+
+  handleMenuClick = (e) => {
+    const { dispatch } = this.props;
+    const { selectedRows } = this.state;
+
+    if (!selectedRows) return;
+
+    switch (e.key) {
+      case 'remove':
+        dispatch({
+          type: 'major/remove',
+          payload: {
+            no: selectedRows.map(row => row.no).join(','),
+          },
+          callback: () => {
+            this.setState({
+              selectedRows: [],
+            });
+          },
+        });
+        break;
+      default:
+        break;
+    }
+  }
+
+  handleSelectRows = (rows) => {
+    this.setState({
+      selectedRows: rows,
     });
   }
 
@@ -94,7 +123,7 @@ export default class TableList extends PureComponent {
       });
 
       dispatch({
-        type: 'rule/fetch',
+        type: 'major/fetch',
         payload: values,
       });
     });
@@ -114,7 +143,7 @@ export default class TableList extends PureComponent {
 
   handleAdd = () => {
     this.props.dispatch({
-      type: 'rule/add',
+      type: 'major/add',
       payload: {
         description: this.state.addInputValue,
       },
@@ -210,6 +239,16 @@ export default class TableList extends PureComponent {
               )}
             </FormItem>
           </Col>
+          <Col md={8} sm={24}>
+            <FormItem label="使用状态">
+              {getFieldDecorator('status4')(
+                <Select placeholder="请选择" style={{ width: '100%' }}>
+                  <Option value="0">关闭</Option>
+                  <Option value="1">运行中</Option>
+                </Select>
+              )}
+            </FormItem>
+          </Col>
         </Row>
         <div style={{ overflow: 'hidden' }}>
           <span style={{ float: 'right', marginBottom: 24 }}>
@@ -229,70 +268,15 @@ export default class TableList extends PureComponent {
   }
 
   render() {
-    const { rule: { loading: ruleLoading, data } } = this.props;
+    const { major: { loading: ruleLoading, data } } = this.props;
     const { selectedRows, modalVisible, addInputValue } = this.state;
-
-    const columns = [
-      {
-        title: '学号',
-        dataIndex: 'stuId',
-        render: (text, record) => {
-          return <Link to={{
-            pathname: '/profile/advanced'
-          }} >{record.stuId}</Link>;
-        },
-      },
-      {
-        title: '姓名',
-        dataIndex: 'stuName',
-      },
-      {
-        title: '班级',
-        dataIndex: 'className',
-      },
-      {
-        title: '专业',
-        dataIndex: 'majorName',
-      },
-      {
-        title: '学院',
-        dataIndex: 'stuHomeland',
-      },
-      // {
-      //   title: '注册状态',
-      //   dataIndex: 'status',
-      //   filters: [
-      //     {
-      //       text: status[0],
-      //       value: 0,
-      //     },
-      //     {
-      //       text: status[1],
-      //       value: 1,
-      //     },
-
-      //   ],
-      //   render(val) {
-      //     return <Badge status={statusMap[val]} text={status[val]} />;
-      //   },
-      // },
-      {
-        title: '注册时间',
-        dataIndex: 'updatedAt',
-        sorter: true,
-        render: val => <span>{moment(val).format('YYYY-MM-DD HH:mm:ss')}</span>,
-      },
-      {
-        title: '操作',
-        render: () => (
-          <div>
-            <a href="">修改</a>
-            <Divider type="vertical" />
-            <a href="">删除</a>
-          </div>
-        ),
-      },
-    ];
+    console.log("data", data)
+    const menu = (
+      <Menu onClick={this.handleMenuClick} selectedKeys={[]}>
+        <Menu.Item key="remove">删除</Menu.Item>
+        <Menu.Item key="approval">批量审批</Menu.Item>
+      </Menu>
+    );
 
     return (
       <PageHeaderLayout title="学生信息">
@@ -305,16 +289,26 @@ export default class TableList extends PureComponent {
               <Button icon="plus" type="primary" onClick={() => this.handleModalVisible(true)}>
                 新建
               </Button>
+              {
+                selectedRows.length > 0 && (
+                  <span>
+                    <Button>批量操作</Button>
+                    <Dropdown overlay={menu}>
+                      <Button>
+                        更多操作 <Icon type="down" />
+                      </Button>
+                    </Dropdown>
+                  </span>
+                )
+              }
             </div>
-            {
-              data && data.result == 1 ?
-                <StandardTable
-                  loading={ruleLoading}
-                  dataSource={data}
-                  columns={columns}
-                  onChange={this.handleStandardTableChange}
-                /> : <div>暂无数据</div>
-            }
+            <StandardTable
+              selectedRows={selectedRows}
+              loading={ruleLoading}
+              data={data}
+              onSelectRow={this.handleSelectRows}
+              onChange={this.handleStandardTableChange}
+            />
           </div>
         </Card>
         <Modal

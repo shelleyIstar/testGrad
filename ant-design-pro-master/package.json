@@ -3,6 +3,7 @@
   "version": "0.3.0",
   "description": "An out-of-box UI solution for enterprise applications",
   "private": true,
+  "primary-color": "#ff4d4f",
   "scripts": {
     "precommit": "npm run lint-staged",
     "start": "roadhog server",

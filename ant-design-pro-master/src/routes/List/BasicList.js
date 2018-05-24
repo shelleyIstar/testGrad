@@ -39,8 +39,8 @@ export default class BasicList extends PureComponent {
       <div className={styles.extraContent}>
         <RadioGroup defaultValue="all">
           <RadioButton value="all">全部</RadioButton>
-          <RadioButton value="progress">进行中</RadioButton>
-          <RadioButton value="waiting">等待中</RadioButton>
+          <RadioButton value="progress">待处理</RadioButton>
+          <RadioButton value="waiting">已完成</RadioButton>
         </RadioGroup>
         <Search
           className={styles.extraContentSearch}
@@ -64,7 +64,7 @@ export default class BasicList extends PureComponent {
           <p>{owner}</p>
         </div>
         <div>
-          <span>开始时间</span>
+          <span>提问时间</span>
           <p>{moment(createdAt).format('YYYY-MM-DD hh:mm')}</p>
         </div>
         <div>
@@ -98,13 +98,13 @@ export default class BasicList extends PureComponent {
           <Card bordered={false}>
             <Row>
               <Col sm={8} xs={24}>
-                <Info title="我的待办" value="8个任务" bordered />
+                <Info title="我的待办" value="8个问题" bordered />
               </Col>
               <Col sm={8} xs={24}>
-                <Info title="本周任务平均处理时间" value="32分钟" bordered />
+                <Info title="本周问题平均处理时间" value="32分钟" bordered />
               </Col>
               <Col sm={8} xs={24}>
-                <Info title="本周完成任务数" value="24个任务" />
+                <Info title="本周解答问题数" value="24个问题" />
               </Col>
             </Row>
           </Card>
@@ -112,7 +112,7 @@ export default class BasicList extends PureComponent {
           <Card
             className={styles.listCard}
             bordered={false}
-            title="标准列表"
+            title="问题信息"
             style={{ marginTop: 24 }}
             bodyStyle={{ padding: '0 32px 40px 32px' }}
             extra={extraContent}
@@ -128,7 +128,7 @@ export default class BasicList extends PureComponent {
               dataSource={list}
               renderItem={item => (
                 <List.Item
-                  actions={[<a>编辑</a>, <MoreBtn />]}
+                  actions={[<a>回复</a>, <MoreBtn />]}
                 >
                   <List.Item.Meta
                     avatar={<Avatar src={item.logo} shape="square" size="large" />}

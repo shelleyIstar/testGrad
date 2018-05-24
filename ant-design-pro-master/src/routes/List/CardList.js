@@ -26,15 +26,14 @@ export default class CardList extends PureComponent {
     const content = (
       <div className={styles.pageHeaderContent}>
         <p>
-          段落示意：蚂蚁金服务设计平台 ant.design，用最小的工作量，无缝接入蚂蚁金服生态，
-          提供跨越设计与开发的体验解决方案。
+          小程序项目：小程序主要提供以下项目服务，且注册便捷。
         </p>
         <div className={styles.contentLink}>
           <a>
-            <img alt="" src="https://gw.alipayobjects.com/zos/rmsportal/MjEImQtenlyueSmVEfUD.svg" /> 快速开始
+            <img alt="" src="https://gw.alipayobjects.com/zos/rmsportal/MjEImQtenlyueSmVEfUD.svg" /> 数据信息
           </a>
           <a>
-            <img alt="" src="https://gw.alipayobjects.com/zos/rmsportal/NbuDUAuBlIApFuDvWiND.svg" /> 产品简介
+            <img alt="" src="https://gw.alipayobjects.com/zos/rmsportal/NbuDUAuBlIApFuDvWiND.svg" /> 项目信息
           </a>
           <a>
             <img alt="" src="https://gw.alipayobjects.com/zos/rmsportal/ohOEPSYdDTNnyMbGuyLb.svg" /> 产品文档
@@ -51,7 +50,7 @@ export default class CardList extends PureComponent {
 
     return (
       <PageHeaderLayout
-        title="卡片列表"
+        title="小程序项目"
         content={content}
         extraContent={extraContent}
       >
@@ -63,7 +62,7 @@ export default class CardList extends PureComponent {
             dataSource={['', ...list]}
             renderItem={item => (item ? (
               <List.Item key={item.id}>
-                <Card hoverable className={styles.card} actions={[<a>操作一</a>, <a>操作二</a>]}>
+                <Card hoverable className={styles.card} actions={[<a>上线</a>, <a>下线</a>]}>
                   <Card.Meta
                     avatar={<img alt="" className={styles.cardAvatar} src={item.avatar} />}
                     title={<a href="#">{item.title}</a>}

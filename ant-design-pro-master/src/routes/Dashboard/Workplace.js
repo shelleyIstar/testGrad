@@ -12,27 +12,27 @@ import styles from './Workplace.less';
 
 const links = [
   {
-    title: '操作一',
+    title: '校区管理',
     href: '',
   },
   {
-    title: '操作二',
+    title: '学院管理',
     href: '',
   },
   {
-    title: '操作三',
+    title: '专业管理',
     href: '',
   },
   {
-    title: '操作四',
+    title: '班级管理',
     href: '',
   },
   {
-    title: '操作五',
+    title: '学生管理',
     href: '',
   },
   {
-    title: '操作六',
+    title: '寝室管理',
     href: '',
   },
 ];
@@ -40,31 +40,31 @@ const links = [
 const members = [
   {
     id: 'members-1',
-    title: '科学搬砖组',
+    title: '新媒体学院',
     logo: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
     link: '',
   },
   {
     id: 'members-2',
-    title: '程序员日常',
+    title: '新闻学院',
     logo: 'https://gw.alipayobjects.com/zos/rmsportal/cnrhVkzwxjPwAaCfPbdc.png',
     link: '',
   },
   {
     id: 'members-3',
-    title: '设计天团',
+    title: '播音主持艺术学院',
     logo: 'https://gw.alipayobjects.com/zos/rmsportal/gaOngJwsRYRaVAuXXcmB.png',
     link: '',
   },
   {
     id: 'members-4',
-    title: '中二少女团',
+    title: '电子信息学院',
     logo: 'https://gw.alipayobjects.com/zos/rmsportal/ubnKSIfAJTxIgXOKlciN.png',
     link: '',
   },
   {
     id: 'members-5',
-    title: '骗你学计算机',
+    title: '电影学院',
     logo: 'https://gw.alipayobjects.com/zos/rmsportal/WhxKECPNujWoWEFNdnJE.png',
     link: '',
   },
@@ -142,8 +142,8 @@ export default class Workplace extends PureComponent {
           <Avatar size="large" src="https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png" />
         </div>
         <div className={styles.content}>
-          <div className={styles.contentTitle}>早安，曲丽丽，祝你开心每一天！</div>
-          <div>交互专家 | 蚂蚁金服－某某某事业群－某某平台部－某某技术部－UED</div>
+          <div className={styles.contentTitle}>早安，管理员，今天的效率很不错呦！</div>
+          <div>浙江传媒学院－新媒体学院－数字媒体技术－浙传迎新小程序组</div>
         </div>
       </div>
     );
@@ -152,15 +152,15 @@ export default class Workplace extends PureComponent {
       <div className={styles.pageHeaderExtra}>
         <div>
           <p>项目数</p>
-          <p>56</p>
+          <p>9</p>
         </div>
-        <div>
-          <p>团队内排名</p>
+        {/* <div>
+          <p>问题汇总</p>
           <p>8<span> / 24</span></p>
-        </div>
+        </div> */}
         <div>
-          <p>项目访问</p>
-          <p>2,223</p>
+          <p>项目访问量</p>
+          <p>9,999</p>
         </div>
       </div>
     );
@@ -175,9 +175,9 @@ export default class Workplace extends PureComponent {
             <Card
               className={styles.projectList}
               style={{ marginBottom: 24 }}
-              title="进行中的项目"
+              title="小程序项目"
               bordered={false}
-              extra={<Link to="/">全部项目</Link>}
+              extra={<Link to="/">项目数据分析</Link>}
               loading={projectLoading}
               bodyStyle={{ padding: 0 }}
             >
@@ -215,9 +215,9 @@ export default class Workplace extends PureComponent {
               loading={activitiesLoading}
             >
               <List loading={activitiesLoading} size="large">
-                <div className={styles.activitiesList}>
+                {/* <div className={styles.activitiesList}>
                   {this.renderActivities()}
-                </div>
+                </div> */}
               </List>
             </Card>
           </Col>
@@ -237,7 +237,7 @@ export default class Workplace extends PureComponent {
             <Card
               style={{ marginBottom: 24 }}
               bordered={false}
-              title="XX 指数"
+              title="热度指数"
               loading={radarData.length === 0}
             >
               <div className={styles.chart}>
@@ -247,7 +247,7 @@ export default class Workplace extends PureComponent {
             <Card
               bodyStyle={{ paddingTop: 12, paddingBottom: 12 }}
               bordered={false}
-              title="团队"
+              title="学院"
             >
               <div className={styles.members}>
                 <Row gutter={48}>

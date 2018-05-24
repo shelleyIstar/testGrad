@@ -48,7 +48,10 @@ const proxy = {
   }],
   'GET /api/project/notice': getNotice,
   'GET /api/activities': getActivities,
-  'GET /api/rule': getRule,
+  'GET /list_stu.action': 'https://www.zumc.xin/welcome',
+  'GET /list_major_dir.action': 'https://www.zumc.xin/welcome',
+  // 'GET /list_stu.action': '101.132.150.107:80',
+  // 'GET /list_stu.action': 'https://101.132.150.107:80/welcome/',
   'POST /api/rule': {
     $params: {
       pageSize: {

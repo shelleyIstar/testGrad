@@ -275,7 +275,7 @@ class BasicLayout extends React.PureComponent {
           <div className={styles.logo}>
             <Link to="/">
               <img src={logo} alt="logo" />
-              <h1>Ant Design Pro</h1>
+              <h1>浙传迎新后台</h1>
             </Link>
           </div>
           <Menu
@@ -368,22 +368,14 @@ class BasicLayout extends React.PureComponent {
               </Switch>
             </div>
             <GlobalFooter
-              links={[{
-                title: 'Pro 首页',
-                href: 'http://pro.ant.design',
-                blankTarget: true,
-              }, {
-                title: 'GitHub',
-                href: 'https://github.com/ant-design/ant-design-pro',
-                blankTarget: true,
-              }, {
-                title: 'Ant Design',
-                href: 'http://ant.design',
-                blankTarget: true,
-              }]}
+              // links={[{
+              //   title: '浙传迎新后台',
+              //   href: 'http://pro.ant.design',
+              //   blankTarget: true,
+              // }]}
               copyright={
                 <div>
-                  Copyright <Icon type="copyright" /> 2017 蚂蚁金服体验技术部出品
+                  Copyright <Icon type="copyright" /> 2018 新媒体学院-数字媒体技术专业出品
                 </div>
               }
             />

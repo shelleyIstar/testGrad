@@ -24,7 +24,7 @@ for (let i = 0; i < fakeY2.length; i += 1) {
 const salesData = [];
 for (let i = 0; i < 12; i += 1) {
   salesData.push({
-    x: `${i + 1}月`,
+    x: `新媒体${i}`,
     y: Math.floor(Math.random() * 1000) + 200,
   });
 }
@@ -133,7 +133,7 @@ for (let i = 0; i < 20; i += 1) {
 
 const radarOriginData = [
   {
-    name: '个人',
+    name: '专业',
     ref: 10,
     koubei: 8,
     output: 4,
@@ -141,7 +141,7 @@ const radarOriginData = [
     hot: 7,
   },
   {
-    name: '团队',
+    name: '学院',
     ref: 3,
     koubei: 9,
     output: 6,
@@ -149,7 +149,7 @@ const radarOriginData = [
     hot: 1,
   },
   {
-    name: '部门',
+    name: '校区',
     ref: 4,
     koubei: 1,
     output: 6,

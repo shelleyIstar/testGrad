@@ -21,89 +21,94 @@ export const getNavData = app => [
         path: 'dashboard',
         children: [
           {
-            name: '分析页',
-            path: 'analysis',
-            component: dynamicWrapper(app, ['chart'], () => import('../routes/Dashboard/Analysis')),
-          },
-          {
-            name: '监控页',
-            path: 'monitor',
-            component: dynamicWrapper(app, ['monitor'], () => import('../routes/Dashboard/Monitor')),
-          },
-          {
-            name: '工作台',
+            name: '管理工作台',
             path: 'workplace',
             component: dynamicWrapper(app, ['project', 'activities', 'chart'], () => import('../routes/Dashboard/Workplace')),
           },
+          {
+            name: '数据分析页',
+            path: 'analysis',
+            component: dynamicWrapper(app, ['chart'], () => import('../routes/Dashboard/Analysis')),
+          },
+          // {
+          //   name: '数据监控页',
+          //   path: 'monitor',
+          //   component: dynamicWrapper(app, ['monitor'], () => import('../routes/Dashboard/Monitor')),
+          // },
         ],
       },
+      // {
+      //   name: '表单页',
+      //   path: 'form',
+      //   icon: 'form',
+      //   children: [
+      //     {
+      //       name: '基础表单',
+      //       path: 'basic-form',
+      //       component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/BasicForm')),
+      //     },
+      //     {
+      //       name: '分步表单',
+      //       path: 'step-form',
+      //       component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/StepForm')),
+      //       children: [
+      //         {
+      //           path: 'confirm',
+      //           component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/StepForm/Step2')),
+      //         },
+      //         {
+      //           path: 'result',
+      //           component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/StepForm/Step3')),
+      //         },
+      //       ],
+      //     },
+      //     {
+      //       name: '高级表单',
+      //       path: 'advanced-form',
+      //       component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/AdvancedForm')),
+      //     },
+      //   ],
+      // },
       {
-        name: '表单页',
-        path: 'form',
-        icon: 'form',
-        children: [
-          {
-            name: '基础表单',
-            path: 'basic-form',
-            component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/BasicForm')),
-          },
-          {
-            name: '分步表单',
-            path: 'step-form',
-            component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/StepForm')),
-            children: [
-              {
-                path: 'confirm',
-                component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/StepForm/Step2')),
-              },
-              {
-                path: 'result',
-                component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/StepForm/Step3')),
-              },
-            ],
-          },
-          {
-            name: '高级表单',
-            path: 'advanced-form',
-            component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/AdvancedForm')),
-          },
-        ],
-      },
-      {
-        name: '列表页',
+        name: '信息汇总',
         path: 'list',
         icon: 'table',
         children: [
           {
-            name: '查询表格',
+            name: '学生信息',
             path: 'table-list',
             component: dynamicWrapper(app, ['rule'], () => import('../routes/List/TableList')),
           },
           {
-            name: '标准列表',
+            name: '专业信息',
+            path: 'major-list',
+            component: dynamicWrapper(app, ['rule'], () => import('../routes/List/MajorList')),
+          },
+          {
+            name: '问题列表',
             path: 'basic-list',
             component: dynamicWrapper(app, ['list'], () => import('../routes/List/BasicList')),
           },
           {
-            name: '卡片列表',
+            name: '小程序项目',
             path: 'card-list',
             component: dynamicWrapper(app, ['list'], () => import('../routes/List/CardList')),
           },
-          {
-            name: '搜索列表（项目）',
-            path: 'cover-card-list',
-            component: dynamicWrapper(app, ['list'], () => import('../routes/List/CoverCardList')),
-          },
-          {
-            name: '搜索列表（应用）',
-            path: 'filter-card-list',
-            component: dynamicWrapper(app, ['list'], () => import('../routes/List/FilterCardList')),
-          },
-          {
-            name: '搜索列表（文章）',
-            path: 'search',
-            component: dynamicWrapper(app, ['list'], () => import('../routes/List/SearchList')),
-          },
+          // {
+          //   name: '搜索列表（项目）',
+          //   path: 'cover-card-list',
+          //   component: dynamicWrapper(app, ['list'], () => import('../routes/List/CoverCardList')),
+          // },
+          // {
+          //   name: '搜索列表（应用）',
+          //   path: 'filter-card-list',
+          //   component: dynamicWrapper(app, ['list'], () => import('../routes/List/FilterCardList')),
+          // },
+          // {
+          //   name: '搜索列表（文章）',
+          //   path: 'search',
+          //   component: dynamicWrapper(app, ['list'], () => import('../routes/List/SearchList')),
+          // },
         ],
       },
       {
@@ -123,45 +128,45 @@ export const getNavData = app => [
           },
         ],
       },
-      {
-        name: '结果',
-        path: 'result',
-        icon: 'check-circle-o',
-        children: [
-          {
-            name: '成功',
-            path: 'success',
-            component: dynamicWrapper(app, [], () => import('../routes/Result/Success')),
-          },
-          {
-            name: '失败',
-            path: 'fail',
-            component: dynamicWrapper(app, [], () => import('../routes/Result/Error')),
-          },
-        ],
-      },
-      {
-        name: '异常',
-        path: 'exception',
-        icon: 'warning',
-        children: [
-          {
-            name: '403',
-            path: '403',
-            component: dynamicWrapper(app, [], () => import('../routes/Exception/403')),
-          },
-          {
-            name: '404',
-            path: '404',
-            component: dynamicWrapper(app, [], () => import('../routes/Exception/404')),
-          },
-          {
-            name: '500',
-            path: '500',
-            component: dynamicWrapper(app, [], () => import('../routes/Exception/500')),
-          },
-        ],
-      },
+      // {
+      //   name: '结果',
+      //   path: 'result',
+      //   icon: 'check-circle-o',
+      //   children: [
+      //     {
+      //       name: '成功',
+      //       path: 'success',
+      //       component: dynamicWrapper(app, [], () => import('../routes/Result/Success')),
+      //     },
+      //     {
+      //       name: '失败',
+      //       path: 'fail',
+      //       component: dynamicWrapper(app, [], () => import('../routes/Result/Error')),
+      //     },
+      //   ],
+      // },
+      // {
+      //   name: '异常',
+      //   path: 'exception',
+      //   icon: 'warning',
+      //   children: [
+      //     {
+      //       name: '403',
+      //       path: '403',
+      //       component: dynamicWrapper(app, [], () => import('../routes/Exception/403')),
+      //     },
+      //     {
+      //       name: '404',
+      //       path: '404',
+      //       component: dynamicWrapper(app, [], () => import('../routes/Exception/404')),
+      //     },
+      //     {
+      //       name: '500',
+      //       path: '500',
+      //       component: dynamicWrapper(app, [], () => import('../routes/Exception/500')),
+      //     },
+      //   ],
+      // },
     ],
   },
   {
@@ -192,15 +197,5 @@ export const getNavData = app => [
         ],
       },
     ],
-  },
-  {
-    component: dynamicWrapper(app, [], () => import('../layouts/BlankLayout')),
-    layout: 'BlankLayout',
-    children: {
-      name: '使用文档',
-      path: 'http://pro.ant.design/docs/getting-started',
-      target: '_blank',
-      icon: 'book',
-    },
   },
 ];

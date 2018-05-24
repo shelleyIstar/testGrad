@@ -17,8 +17,8 @@ const { RangePicker } = DatePicker;
 const rankingListData = [];
 for (let i = 0; i < 7; i += 1) {
   rankingListData.push({
-    title: `工专路 ${i} 号店`,
-    total: 323234,
+    title: `新媒体学院${i}`,
+    total: `999人`,
   });
 }
 
@@ -223,10 +223,10 @@ export default class Analysis extends Component {
           <Col {...topColResponsiveProps}>
             <ChartCard
               bordered={false}
-              title="总销售额"
-              action={<Tooltip title="指标说明"><Icon type="info-circle-o" /></Tooltip>}
-              total={yuan(126560)}
-              footer={<Field label="日均销售额" value={`￥${numeral(12423).format('0,0')}`} />}
+              title="注册总人数"
+              action={<Tooltip title="小程序总注册人数"><Icon type="info-circle-o" /></Tooltip>}
+              total={'9,999'}
+              footer={<Field label="日均注册人数" value={`￥${numeral(12423).format('0,0')}`} />}
               contentHeight={46}
             >
               <Trend flag="up" style={{ marginRight: 16 }}>
@@ -241,7 +241,7 @@ export default class Analysis extends Component {
             <ChartCard
               bordered={false}
               title="访问量"
-              action={<Tooltip title="指标说明"><Icon type="info-circle-o" /></Tooltip>}
+              action={<Tooltip title="日均访问量"><Icon type="info-circle-o" /></Tooltip>}
               total={numeral(8846).format('0,0')}
               footer={<Field label="日访问量" value={numeral(1234).format('0,0')} />}
               contentHeight={46}
@@ -256,10 +256,10 @@ export default class Analysis extends Component {
           <Col {...topColResponsiveProps}>
             <ChartCard
               bordered={false}
-              title="支付笔数"
-              action={<Tooltip title="指标说明"><Icon type="info-circle-o" /></Tooltip>}
-              total={numeral(6560).format('0,0')}
-              footer={<Field label="转化率" value="60%" />}
+              title="使用频率"
+              action={<Tooltip title="日均打开次数"><Icon type="info-circle-o" /></Tooltip>}
+              total={numeral(5).format('0,0')}
+              footer={<Field label="日均打开次数" value="3" />}
               contentHeight={46}
             >
               <MiniBar
@@ -271,8 +271,8 @@ export default class Analysis extends Component {
           <Col {...topColResponsiveProps}>
             <ChartCard
               bordered={false}
-              title="运营活动效果"
-              action={<Tooltip title="指标说明"><Icon type="info-circle-o" /></Tooltip>}
+              title="访问时间"
+              action={<Tooltip title="访问时间"><Icon type="info-circle-o" /></Tooltip>}
               total="78%"
               footer={
                 <div style={{ whiteSpace: 'nowrap', overflow: 'hidden' }}>
@@ -298,20 +298,20 @@ export default class Analysis extends Component {
         >
           <div className={styles.salesCard}>
             <Tabs tabBarExtraContent={salesExtra} size="large" tabBarStyle={{ marginBottom: 24 }}>
-              <TabPane tab="销售额" key="sales">
+              <TabPane tab="注册人数" key="sales">
                 <Row>
                   <Col xl={16} lg={12} md={12} sm={24} xs={24}>
                     <div className={styles.salesBar}>
                       <Bar
                         height={295}
-                        title="销售额趋势"
+                        title="注册人数趋势"
                         data={salesData}
                       />
                     </div>
                   </Col>
                   <Col xl={8} lg={12} md={12} sm={24} xs={24}>
                     <div className={styles.salesRank}>
-                      <h4 className={styles.rankingTitle}>门店销售额排名</h4>
+                      <h4 className={styles.rankingTitle}>学院排名</h4>
                       <ul className={styles.rankingList}>
                         {
                           rankingListData.map((item, i) => (
@@ -327,7 +327,7 @@ export default class Analysis extends Component {
                   </Col>
                 </Row>
               </TabPane>
-              <TabPane tab="访问量" key="views">
+              <TabPane tab="日均访问量" key="views">
                 <Row>
                   <Col xl={16} lg={12} md={12} sm={24} xs={24}>
                     <div className={styles.salesBar}>
@@ -340,7 +340,7 @@ export default class Analysis extends Component {
                   </Col>
                   <Col xl={8} lg={12} md={12} sm={24} xs={24}>
                     <div className={styles.salesRank}>
-                      <h4 className={styles.rankingTitle}>门店访问量排名</h4>
+                      <h4 className={styles.rankingTitle}>访问量排名</h4>
                       <ul className={styles.rankingList}>
                         {
                           rankingListData.map((item, i) => (
@@ -360,7 +360,7 @@ export default class Analysis extends Component {
           </div>
         </Card>
 
-        <Row gutter={24}>
+        {/* <Row gutter={24}>
           <Col xl={12} lg={24} md={24} sm={24} xs={24}>
             <Card
               loading={loading}
@@ -480,7 +480,7 @@ export default class Analysis extends Component {
               )
             }
           </Tabs>
-        </Card>
+        </Card> */}
       </div>
     );
   }
