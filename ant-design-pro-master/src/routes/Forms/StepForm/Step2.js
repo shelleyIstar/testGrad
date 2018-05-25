@@ -28,48 +28,47 @@ export default ({ formItemLayout, form, data, dispatch, submitting }) => {
       <Alert
         closable
         showIcon
-        message="确认转账后，资金将直接打入对方账户，无法退回。"
+        message="确认发布后后，文章将在小程序中展示。"
         style={{ marginBottom: 24 }}
       />
       <Form.Item
         {...formItemLayout}
         className={styles.stepFormText}
-        label="付款账户"
+        label="文章发布方"
       >
         {data.payAccount}
       </Form.Item>
       <Form.Item
         {...formItemLayout}
         className={styles.stepFormText}
-        label="收款账户"
+        label="文章标题"
       >
         {data.receiverAccount}
       </Form.Item>
       <Form.Item
         {...formItemLayout}
         className={styles.stepFormText}
-        label="收款人姓名"
+        label="文章摘要"
       >
         {data.receiverName}
       </Form.Item>
       <Form.Item
         {...formItemLayout}
         className={styles.stepFormText}
-        label="转账金额"
+        label="文章详情"
       >
         <span className={styles.money}>{data.amount}</span>
-        <span className={styles.uppercase}>（{digitUppercase(data.amount)}）</span>
       </Form.Item>
       <Divider style={{ margin: '24px 0' }} />
       <Form.Item
         {...formItemLayout}
-        label="支付密码"
+        label="发布权限密码"
         required={false}
       >
         {getFieldDecorator('password', {
           initialValue: '123456',
           rules: [{
-            required: true, message: '需要支付密码才能进行支付',
+            required: true, message: '需要发布权限密码才能进行文章发布',
           }],
         })(
           <Input type="password" autoComplete="off" style={{ width: '80%' }} />

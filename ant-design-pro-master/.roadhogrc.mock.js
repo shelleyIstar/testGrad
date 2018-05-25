@@ -50,8 +50,8 @@ const proxy = {
   'GET /api/activities': getActivities,
   'GET /list_stu.action': 'https://www.zumc.xin/welcome',
   'GET /list_major_dir.action': 'https://www.zumc.xin/welcome',
-  // 'GET /list_stu.action': '101.132.150.107:80',
-  // 'GET /list_stu.action': 'https://101.132.150.107:80/welcome/',
+  'GET /list_question.action': 'https://www.zumc.xin/welcome',
+  'GET /get_stu.action': 'https://www.zumc.xin/welcome',
   'POST /api/rule': {
     $params: {
       pageSize: {
@@ -61,6 +61,10 @@ const proxy = {
     },
     $body: postRule,
   },
+  // 'GET /list_stu.action': '101.132.150.107:80',
+  // 'GET /list_stu.action': 'https://101.132.150.107:80/welcome/',
+  'POST /update_freshman.action' : 'https://www.zumc.xin/welcome',
+  'GET /search_stu.action': 'https://www.zumc.xin/welcome',
   'POST /api/forms': (req, res) => {
     res.send({ message: 'Ok' });
   },

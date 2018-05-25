@@ -42,12 +42,12 @@ class StepForm extends PureComponent {
     };
     const CurrentComponent = this.getCurrentComponent();
     return (
-      <PageHeaderLayout title="分步表单" content="将一个冗长或用户不熟悉的表单任务分成多个步骤，指导用户完成。">
+      <PageHeaderLayout title="文章信息" content="提交文章详情">
         <Card bordered={false}>
           <div>
             <Steps current={this.getCurrentStep()} className={styles.steps}>
-              <Step title="填写转账信息" />
-              <Step title="确认转账信息" />
+              <Step title="填写文章详情信息" />
+              <Step title="确认文章信息" />
               <Step title="完成" />
             </Steps>
             <CurrentComponent

@@ -5,6 +5,7 @@ import PageHeaderLayout from '../../layouts/PageHeaderLayout';
 import FooterToolbar from '../../components/FooterToolbar';
 import TableForm from './TableForm';
 import styles from './style.less';
+import queryString from 'query-string'
 
 const { Option } = Select;
 const { RangePicker } = DatePicker;
@@ -41,24 +42,26 @@ const tableData = [{
   department: 'Sidney No. 1 Lake Park',
 }];
 
+@connect(state => ({
+  rule: state.stuData,
+}))
 class AdvancedForm extends PureComponent {
   state = {
     width: '100%',
   };
   componentDidMount() {
-    window.addEventListener('resize', this.resizeFooterToolbar);
+    const { dispatch, location } = this.props
+    const { id } = queryString.parse(location.search)
+    dispatch({
+      type: 'rule/fetchStu',
+      payload: id
+    });
   }
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.resizeFooterToolbar);
-  }
-  resizeFooterToolbar = () => {
-    const sider = document.querySelectorAll('.ant-layout-sider')[0];
-    const width = `calc(100% - ${sider.style.width})`;
-    if (this.state.width !== width) {
-      this.setState({ width });
-    }
-  }
+ 
+ 
   render() {
+    const { rule: { stuData } } = this.props;
+    console.log("dddddd", stuData)
     const { form, dispatch, submitting } = this.props;
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form;
     const validate = () => {

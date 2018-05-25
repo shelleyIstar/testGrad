@@ -17,11 +17,15 @@ const getValue = obj => Object.keys(obj).map(key => obj[key]).join(',');
 @Form.create()
 export default class TableList extends PureComponent {
   state = {
-    addInputValue: '',
+    addInputValue1: '',
+    addInputValue2: '',
+    addInputValue3: '',
+    addInputValue4: '',
     modalVisible: false,
     expandForm: false,
     selectedRows: [],
     formValues: {},
+    paginationStatue: true
   };
 
   componentDidMount() {
@@ -91,10 +95,11 @@ export default class TableList extends PureComponent {
 
       this.setState({
         formValues: values,
+        paginationStatue: false
       });
 
       dispatch({
-        type: 'rule/fetch',
+        type: 'rule/search',
         payload: values,
       });
     });
@@ -106,19 +111,35 @@ export default class TableList extends PureComponent {
     });
   }
 
-  handleAddInput = (e) => {
+  handleAddInput1 = (e) => {
     this.setState({
-      addInputValue: e.target.value,
+      addInputValue1: e.target.value,
+    });
+  }
+
+  handleAddInput2 = (e) => {
+    this.setState({
+      addInputValue2: e.target.value,
+    });
+  }
+  handleAddInput3 = (e) => {
+    this.setState({
+      addInputValue3: e.target.value,
+    });
+  }
+  handleAddInput4 = (e) => {
+    this.setState({
+      addInputValue4: e.target.value,
     });
   }
 
   handleAdd = () => {
-    this.props.dispatch({
-      type: 'rule/add',
-      payload: {
-        description: this.state.addInputValue,
-      },
-    });
+    // this.props.dispatch({
+    //   type: 'rule/add',
+    //   payload: {
+    //     description: this.state.addInputValue1,
+    //   },
+    // });
 
     message.success('添加成功');
     this.setState({
@@ -133,7 +154,7 @@ export default class TableList extends PureComponent {
         <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
           <Col md={8} sm={24}>
             <FormItem label="学生学号">
-              {getFieldDecorator('no')(
+              {getFieldDecorator('stuId')(
                 <Input placeholder="请输入" />
               )}
             </FormItem>
@@ -228,67 +249,73 @@ export default class TableList extends PureComponent {
     return this.state.expandForm ? this.renderAdvancedForm() : this.renderSimpleForm();
   }
 
+  delete =(id) => {
+
+  }
+
   render() {
     const { rule: { loading: ruleLoading, data } } = this.props;
-    const { selectedRows, modalVisible, addInputValue } = this.state;
+    const { selectedRows, modalVisible, addInputValue1,addInputValue2, addInputValue3, addInputValue4, paginationStatue } = this.state;
 
     const columns = [
       {
         title: '学号',
         dataIndex: 'stuId',
+        width: '12%',
         render: (text, record) => {
           return <Link to={{
-            pathname: '/profile/advanced'
-          }} >{record.stuId}</Link>;
+            pathname: '/profile/advanced',search: queryString.stringify({ stuId: record.stuId})
+          }} 
+          // target="_blank"
+           >{record.stuId}</Link>;
         },
       },
       {
         title: '姓名',
         dataIndex: 'stuName',
+        width: '10%',
+      },
+      {
+        title: '性别',
+        dataIndex: 'stuSex',
+        width: '5%'
+      },
+      {
+        title: '家庭地址',
+        dataIndex: 'stuAddress',
+        width: '15%',
       },
       {
         title: '班级',
         dataIndex: 'className',
+        width: '10%',
       },
       {
         title: '专业',
         dataIndex: 'majorName',
+        width: '10%',
+
       },
       {
         title: '学院',
-        dataIndex: 'stuHomeland',
+        dataIndex: 'schoolName',
+        width: '10%',
       },
-      // {
-      //   title: '注册状态',
-      //   dataIndex: 'status',
-      //   filters: [
-      //     {
-      //       text: status[0],
-      //       value: 0,
-      //     },
-      //     {
-      //       text: status[1],
-      //       value: 1,
-      //     },
-
-      //   ],
-      //   render(val) {
-      //     return <Badge status={statusMap[val]} text={status[val]} />;
-      //   },
-      // },
       {
         title: '注册时间',
         dataIndex: 'updatedAt',
         sorter: true,
+        width: '15%',
         render: val => <span>{moment(val).format('YYYY-MM-DD HH:mm:ss')}</span>,
       },
       {
         title: '操作',
-        render: () => (
+        render: (text, record) => (
           <div>
-            <a href="">修改</a>
-            <Divider type="vertical" />
-            <a href="">删除</a>
+            <Link to={{
+            pathname: '/profile/advanced',search: queryString.stringify({ stuId: record.stuId})
+          }} >修改
+          </Link>
           </div>
         ),
       },
@@ -313,6 +340,7 @@ export default class TableList extends PureComponent {
                   dataSource={data}
                   columns={columns}
                   onChange={this.handleStandardTableChange}
+                  pagination={paginationStatue}
                 /> : <div>暂无数据</div>
             }
           </div>
@@ -328,28 +356,28 @@ export default class TableList extends PureComponent {
             wrapperCol={{ span: 15 }}
             label="学号"
           >
-            <Input placeholder="请输入" onChange={this.handleAddInput} value={addInputValue} />
+            <Input placeholder="请输入" onChange={this.handleAddInput1} value={addInputValue1} />
           </FormItem>
           <FormItem
             labelCol={{ span: 5 }}
             wrapperCol={{ span: 15 }}
             label="姓名"
           >
-            <Input placeholder="请输入" onChange={this.handleAddInput} value={addInputValue} />
+            <Input placeholder="请输入" onChange={this.handleAddInput2} value={addInputValue2} />
           </FormItem>
           <FormItem
             labelCol={{ span: 5 }}
             wrapperCol={{ span: 15 }}
             label="班级"
           >
-            <Input placeholder="请输入" onChange={this.handleAddInput} value={addInputValue} />
+            <Input placeholder="请输入" onChange={this.handleAddInput3} value={addInputValue3} />
           </FormItem>
           <FormItem
             labelCol={{ span: 5 }}
             wrapperCol={{ span: 15 }}
             label="专业"
           >
-            <Input placeholder="请输入" onChange={this.handleAddInput} value={addInputValue} />
+            <Input placeholder="请输入" onChange={this.handleAddInput4} value={addInputValue4} />
           </FormItem>
         </Modal>
       </PageHeaderLayout>

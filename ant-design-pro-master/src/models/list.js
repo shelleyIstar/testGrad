@@ -1,4 +1,4 @@
-import { queryFakeList } from '../services/api';
+import { queryFakeList, listQu } from '../services/api';
 
 export default {
   namespace: 'list',
@@ -6,6 +6,8 @@ export default {
   state: {
     list: [],
     loading: false,
+    quData: {
+    }
   },
 
   effects: {
@@ -24,9 +26,31 @@ export default {
         payload: false,
       });
     },
+    *fetchQu({ payload }, { call, put }) {
+      yield put({
+        type: 'changeLoading',
+        payload: true,
+      });
+      const response = yield call(listQu, payload);
+      yield put({
+        type: 'saveList',
+        payload: response
+      });
+      yield put({
+        type: 'changeLoading',
+        payload: false,
+      });
+    },
   },
 
   reducers: {
+    saveList(state, action) {
+      console.log("action", action)
+      return {
+        ...state,
+        quData: action.payload,
+      };
+    },
     appendList(state, action) {
       return {
         ...state,

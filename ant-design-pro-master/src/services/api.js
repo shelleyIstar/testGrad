@@ -18,9 +18,14 @@ export async function queryRule(params) {
   return request(`/list_stu.action?${stringify(params)}`);
 }
 
+export async function queryStuIdData(data) {
+  console.log("data", data)
+  return request(`/search_stu.action?${stringify(data)}`);
+}
+
 export async function removeRule(params) {
   return request('/api/rule', {
-    method: 'POST',
+    method: 'PUT',
     body: {
       ...params,
       method: 'delete',
@@ -36,6 +41,21 @@ export async function addRule(params) {
       method: 'post',
     },
   });
+}
+
+export async function updateFreshman(params) {
+  return request('/update_freshman.action', {
+    method: 'POST',
+    body: params
+  });
+}
+
+export async function searchStudentItem(params) {
+  return request(`/get_stu.action?${stringify(params)}`);
+}
+
+export async function listQu() {
+  return request(`/list_question.action`);
 }
 
 export async function fakeSubmitForm(params) {
@@ -86,7 +106,3 @@ export async function queryNotices() {
 export async function queryListMajor() {
   return request('/list_major_dir.action');
 }
-
-// export async function queryRule() {
-//   return request(`/list_stu.action`);
-// }

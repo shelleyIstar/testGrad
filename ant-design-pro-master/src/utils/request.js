@@ -1,5 +1,6 @@
 import fetch from 'dva/fetch';
 import { notification } from 'antd';
+import queryString from 'query-string'
 
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
@@ -28,11 +29,14 @@ export default function request(url, options) {
   const newOptions = { ...defaultOptions, ...options };
   if (newOptions.method === 'POST' || newOptions.method === 'PUT') {
     newOptions.headers = {
-      Accept: 'application/json',
-      'Content-Type': 'application/json; charset=utf-8',
+      // Accept: 'text/json',
+      // 'Content-Type': 'application/json; charset=utf-8',
+      //  Accept: 'application/x-www-form-urlencoded',
+      'content-type': 'application/x-www-form-urlencoded',
       ...newOptions.headers,
     };
-    newOptions.body = JSON.stringify(newOptions.body);
+    // newOptions.body = JSON.stringify(newOptions.body);
+    newOptions.body =  queryString.stringify(newOptions.body);
   }
 
   return fetch(url, newOptions)

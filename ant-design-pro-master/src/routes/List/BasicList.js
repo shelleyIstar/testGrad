@@ -11,22 +11,20 @@ const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
 const { Search } = Input;
 
-@connect(state => ({
-  list: state.list,
+@connect(({list}) => ({
+  list
 }))
 export default class BasicList extends PureComponent {
   componentDidMount() {
-    this.props.dispatch({
-      type: 'list/fetch',
-      payload: {
-        count: 5,
-      },
-    });
+    const { dispatch } = this.props
+    dispatch({
+      type: 'list/fetchQu'
+    })
   }
 
   render() {
-    const { list: { list, loading } } = this.props;
-
+    const { list: { list, loading, quData } } = this.props;
+    console.log("quData", quData)
     const Info = ({ title, value, bordered }) => (
       <div className={styles.headerInfo}>
         <span>{title}</span>
@@ -68,7 +66,7 @@ export default class BasicList extends PureComponent {
           <p>{moment(createdAt).format('YYYY-MM-DD hh:mm')}</p>
         </div>
         <div>
-          <Progress percent={percent} status={status} strokeWidth={6} />
+          <Progress percent={Math.floor(Math.random() * (100 - 1) + 1)} status="active" strokeWidth={6} />
         </div>
       </div>
     );
@@ -117,23 +115,20 @@ export default class BasicList extends PureComponent {
             bodyStyle={{ padding: '0 32px 40px 32px' }}
             extra={extraContent}
           >
-            <Button type="dashed" style={{ width: '100%', marginBottom: 8 }} icon="plus">
-              添加
-            </Button>
             <List
               size="large"
               rowKey="id"
               loading={loading}
-              pagination={paginationProps}
-              dataSource={list}
+              // pagination={paginationProps}
+              dataSource={quData.question}
               renderItem={item => (
                 <List.Item
                   actions={[<a>回复</a>, <MoreBtn />]}
                 >
                   <List.Item.Meta
-                    avatar={<Avatar src={item.logo} shape="square" size="large" />}
-                    title={<a href={item.href}>{item.title}</a>}
-                    description={item.subDescription}
+                    avatar={<Avatar src={"https://www.zumc.xin/images/logo.png"} shape="square" size="large" />}
+                    title={item.questionContent}
+                    description={item.questionAnswer}
                   />
                   <ListContent data={item} />
                 </List.Item>

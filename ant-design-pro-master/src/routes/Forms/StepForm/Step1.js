@@ -23,60 +23,56 @@ export default ({ formItemLayout, form, dispatch, data }) => {
       <Form layout="horizontal" className={styles.stepForm} hideRequiredMark>
         <Form.Item
           {...formItemLayout}
-          label="付款账户"
+          label="文章发布方"
         >
           {getFieldDecorator('payAccount', {
-            initialValue: data.payAccount || 'ant-design@alipay.com',
-            rules: [{ required: true, message: '请选择付款账户' }],
+            initialValue: data.payAccount || '浙传迎新官方发布',
+            rules: [{ required: true, message: '请选择发布用户' }],
           })(
-            <Select placeholder="test@example.com">
-              <Option value="ant-design@alipay.com">ant-design@alipay.com</Option>
+            <Select placeholder="">
+              <Option value="浙传迎新官方发布">浙传迎新官方发布</Option>
             </Select>
           )}
         </Form.Item>
         <Form.Item
           {...formItemLayout}
-          label="收款账户"
+          label="文章标题"
         >
           <Input.Group compact>
-            <Select defaultValue="alipay" style={{ width: 100 }}>
-              <Option value="alipay">支付宝</Option>
-              <Option value="bank">银行账户</Option>
-            </Select>
             {getFieldDecorator('receiverAccount', {
-              initialValue: data.receiverAccount || 'test@example.com',
+              initialValue: data.receiverAccount || '',
               rules: [
-                { required: true, message: '请输入收款人账户' },
-                { type: 'email', message: '账户名应为邮箱格式' },
+                { required: true, message: '请输入文章标题' },
+                // { type: 'email', message: '请输入文章摘要' },
               ],
             })(
-              <Input style={{ width: 'calc(100% - 100px)' }} placeholder="test@example.com" />
+              <Input style={{ width: 'calc(100% - 100px)' }} placeholder="" />
             )}
           </Input.Group>
         </Form.Item>
         <Form.Item
           {...formItemLayout}
-          label="收款人姓名"
+          label="文章摘要"
         >
           {getFieldDecorator('receiverName', {
-            initialValue: data.receiverName || 'Alex',
-            rules: [{ required: true, message: '请输入收款人姓名' }],
+            initialValue: data.receiverName || '这是一段摘要信息',
+            rules: [{ required: true, message: '请输入文章摘要' }],
           })(
-            <Input placeholder="请输入收款人姓名" />
+            <Input placeholder="请输入文章摘要" />
           )}
         </Form.Item>
         <Form.Item
           {...formItemLayout}
-          label="转账金额"
+          label="文章内容"
         >
           {getFieldDecorator('amount', {
-            initialValue: data.amount || '500',
+            initialValue: data.amount || '',
             rules: [
-              { required: true, message: '请输入转账金额' },
-              { pattern: /^(\d+)((?:\.\d+)?)$/, message: '请输入合法金额数字' },
+              { required: true, message: '请输入文章内容' },
+              { pattern: /^(\d+)((?:\.\d+)?)$/, message: '请输入文章内容' },
             ],
           })(
-            <Input prefix="￥" placeholder="请输入金额" />
+            <Input style={{height:80}} placeholder="请输入文章内容" />
           )}
         </Form.Item>
         <Form.Item
@@ -94,10 +90,10 @@ export default ({ formItemLayout, form, dispatch, data }) => {
       <Divider style={{ margin: '40px 0 24px' }} />
       <div className={styles.desc}>
         <h3>说明</h3>
-        <h4>转账到支付宝账户</h4>
-        <p>如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。</p>
-        <h4>转账到银行卡</h4>
-        <p>如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。</p>
+        <h4>文章发布详情说明</h4>
+        <p>管理员可根据迎新情况，发布相关的报到文章说明，帮助学生了解报到流程，提前熟悉校园生活！</p>
+        {/* <h4>转账到银行卡</h4> */}
+        {/* <p>如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。</p> */}
       </div>
     </div>
   );

@@ -11,30 +11,30 @@ export default ({ dispatch, data }) => {
   const information = (
     <div className={styles.information}>
       <Row>
-        <Col span={8} className={styles.label}>付款账户：</Col>
+        <Col span={8} className={styles.label}>文章发布方：</Col>
         <Col span={16}>{data.payAccount}</Col>
       </Row>
       <Row>
-        <Col span={8} className={styles.label}>收款账户：</Col>
+        <Col span={8} className={styles.label}>文章标题：</Col>
         <Col span={16}>{data.receiverAccount}</Col>
       </Row>
       <Row>
-        <Col span={8} className={styles.label}>收款人姓名：</Col>
+        <Col span={8} className={styles.label}>文章摘要：</Col>
         <Col span={16}>{data.receiverName}</Col>
       </Row>
       <Row>
-        <Col span={8} className={styles.label}>转账金额：</Col>
-        <Col span={16}><span className={styles.money}>{data.amount}</span> 元</Col>
+        <Col span={8} className={styles.label}>文章详情：</Col>
+        <Col span={16}><span className={styles.money}>{data.amount}</span></Col>
       </Row>
     </div>
   );
   const actions = (
     <div>
       <Button type="primary" onClick={onFinish}>
-        再转一笔
+        再发一篇
       </Button>
       <Button>
-        查看账单
+        查看文章
       </Button>
     </div>
   );
@@ -42,7 +42,7 @@ export default ({ dispatch, data }) => {
     <Result
       type="success"
       title="操作成功"
-      description="预计两小时内到账"
+      description="预计两小时内发布到小程序"
       extra={information}
       actions={actions}
       className={styles.result}

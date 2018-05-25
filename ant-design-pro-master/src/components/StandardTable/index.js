@@ -21,13 +21,17 @@ class StandardTable extends PureComponent {
   }
 
   render() {
-    const { dataSource, loading, columns } = this.props;
-
-    const paginationProps = {
-      showSizeChanger: true,
-      showQuickJumper: true,
-      ...dataSource.page,
-    };
+    const { dataSource, loading, columns, pagination } = this.props;
+    var paginationProps = true
+    if(pagination){
+      paginationProps = {
+        showSizeChanger: true,
+        showQuickJumper: true,
+        ...dataSource.page,
+      };
+    }else {
+      paginationProps = false
+    }
 
     return (
       <div>

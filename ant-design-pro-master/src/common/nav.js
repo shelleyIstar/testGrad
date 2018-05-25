@@ -37,38 +37,28 @@ export const getNavData = app => [
           // },
         ],
       },
-      // {
-      //   name: '表单页',
-      //   path: 'form',
-      //   icon: 'form',
-      //   children: [
-      //     {
-      //       name: '基础表单',
-      //       path: 'basic-form',
-      //       component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/BasicForm')),
-      //     },
-      //     {
-      //       name: '分步表单',
-      //       path: 'step-form',
-      //       component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/StepForm')),
-      //       children: [
-      //         {
-      //           path: 'confirm',
-      //           component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/StepForm/Step2')),
-      //         },
-      //         {
-      //           path: 'result',
-      //           component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/StepForm/Step3')),
-      //         },
-      //       ],
-      //     },
-      //     {
-      //       name: '高级表单',
-      //       path: 'advanced-form',
-      //       component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/AdvancedForm')),
-      //     },
-      //   ],
-      // },
+      {
+        name: '文章页',
+        path: 'form',
+        icon: 'form',
+        children: [
+          {
+            name: '文章提交',
+            path: 'step-form',
+            component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/StepForm')),
+            children: [
+              {
+                path: 'confirm',
+                component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/StepForm/Step2')),
+              },
+              {
+                path: 'result',
+                component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/StepForm/Step3')),
+              },
+            ],
+          },
+        ],
+      },
       {
         name: '信息汇总',
         path: 'list',
@@ -78,11 +68,6 @@ export const getNavData = app => [
             name: '学生信息',
             path: 'table-list',
             component: dynamicWrapper(app, ['rule'], () => import('../routes/List/TableList')),
-          },
-          {
-            name: '专业信息',
-            path: 'major-list',
-            component: dynamicWrapper(app, ['rule'], () => import('../routes/List/MajorList')),
           },
           {
             name: '问题列表',
@@ -117,14 +102,9 @@ export const getNavData = app => [
         icon: 'profile',
         children: [
           {
-            name: '基础详情页',
-            path: 'basic',
-            component: dynamicWrapper(app, ['profile'], () => import('../routes/Profile/BasicProfile')),
-          },
-          {
-            name: '高级详情页',
+            name: '学生详情页',
             path: 'advanced',
-            component: dynamicWrapper(app, ['profile'], () => import('../routes/Profile/AdvancedProfile')),
+            component: dynamicWrapper(app, ['rule'], () => import('../routes/Profile/AdvancedProfile')),
           },
         ],
       },

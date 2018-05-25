@@ -64,7 +64,7 @@ export default class CardList extends PureComponent {
               <List.Item key={item.id}>
                 <Card hoverable className={styles.card} actions={[<a>上线</a>, <a>下线</a>]}>
                   <Card.Meta
-                    avatar={<img alt="" className={styles.cardAvatar} src={item.avatar} />}
+                    avatar={<img alt="" className={styles.cardAvatar} src={"https://www.zumc.xin/images/logo.png"} />}
                     title={<a href="#">{item.title}</a>}
                     description={(
                       <Ellipsis className={styles.item} lines={3}>{item.description}</Ellipsis>
