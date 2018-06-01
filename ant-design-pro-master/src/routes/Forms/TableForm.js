@@ -112,7 +112,7 @@ export default class TableForm extends PureComponent {
   }
   render() {
     const columns = [{
-      title: '成员姓名',
+      title: '',
       dataIndex: 'name',
       key: 'name',
       width: '20%',
@@ -125,14 +125,14 @@ export default class TableForm extends PureComponent {
               onChange={e => this.handleFieldChange(e, 'name', record.key)}
               onBlur={e => this.saveRow(e, record.key)}
               onKeyPress={e => this.handleKeyPress(e, record.key)}
-              placeholder="成员姓名"
+              placeholder=""
             />
           );
         }
         return text;
       },
     }, {
-      title: '工号',
+      title: '',
       dataIndex: 'workId',
       key: 'workId',
       width: '20%',
@@ -144,14 +144,14 @@ export default class TableForm extends PureComponent {
               onChange={e => this.handleFieldChange(e, 'workId', record.key)}
               onBlur={e => this.saveRow(e, record.key)}
               onKeyPress={e => this.handleKeyPress(e, record.key)}
-              placeholder="工号"
+              placeholder=""
             />
           );
         }
         return text;
       },
     }, {
-      title: '所属部门',
+      title: '',
       dataIndex: 'department',
       key: 'department',
       width: '40%',
@@ -163,7 +163,7 @@ export default class TableForm extends PureComponent {
               onChange={e => this.handleFieldChange(e, 'department', record.key)}
               onBlur={e => this.saveRow(e, record.key)}
               onKeyPress={e => this.handleKeyPress(e, record.key)}
-              placeholder="所属部门"
+              placeholder=""
             />
           );
         }
@@ -221,7 +221,7 @@ export default class TableForm extends PureComponent {
           onClick={this.newMember}
           icon="plus"
         >
-          新增成员
+          新增
         </Button>
       </div>
     );

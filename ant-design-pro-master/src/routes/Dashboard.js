@@ -82,7 +82,7 @@ class Dashboard extends PureComponent {
         <Row gutter={24} style={{ marginTop: 24 }}>
           <Col span={24}>
             <Card
-              title="业务表格"
+              title="表格"
               bordered={false}
               extra={<Icon type="setting" />}
             >

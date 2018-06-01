@@ -142,7 +142,7 @@ export default class Workplace extends PureComponent {
           <Avatar size="large" src="https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png" />
         </div>
         <div className={styles.content}>
-          <div className={styles.contentTitle}>早安，管理员，今天的效率很不错呦！</div>
+          <div className={styles.contentTitle}>下午好，管理员，今天的效率很不错呦！</div>
           <div>浙江传媒学院－新媒体学院－数字媒体技术－浙传迎新小程序组</div>
         </div>
       </div>

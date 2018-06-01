@@ -226,7 +226,7 @@ export default class Analysis extends Component {
               title="注册总人数"
               action={<Tooltip title="小程序总注册人数"><Icon type="info-circle-o" /></Tooltip>}
               total={'9,999'}
-              footer={<Field label="日均注册人数" value={`￥${numeral(12423).format('0,0')}`} />}
+              footer={<Field label="日均注册人数" value={`${numeral(12423).format('0,0')}`} />}
               contentHeight={46}
             >
               <Trend flag="up" style={{ marginRight: 16 }}>

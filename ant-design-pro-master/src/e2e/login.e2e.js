@@ -22,6 +22,6 @@ describe('Login', () => {
       .wait('.ant-layout-sider h1') // should display error
       .evaluate(() => document.body.innerHTML)
       .end();
-    expect(text).toContain('<h1>Ant Design Pro</h1>');
+    expect(text).toContain('<h1>浙传迎新小程序</h1>');
   });
 });

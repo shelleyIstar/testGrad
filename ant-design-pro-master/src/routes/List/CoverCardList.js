@@ -156,18 +156,8 @@ export default class CoverCardList extends PureComponent {
                 <FormItem>
                   {getFieldDecorator('category')(
                     <TagSelect onChange={this.handleFormSubmit} expandable>
-                      <TagSelect.Option value="cat1">类目一</TagSelect.Option>
-                      <TagSelect.Option value="cat2">类目二</TagSelect.Option>
-                      <TagSelect.Option value="cat3">类目三</TagSelect.Option>
-                      <TagSelect.Option value="cat4">类目四</TagSelect.Option>
-                      <TagSelect.Option value="cat5">类目五</TagSelect.Option>
-                      <TagSelect.Option value="cat6">类目六</TagSelect.Option>
-                      <TagSelect.Option value="cat7">类目七</TagSelect.Option>
-                      <TagSelect.Option value="cat8">类目八</TagSelect.Option>
-                      <TagSelect.Option value="cat9">类目九</TagSelect.Option>
-                      <TagSelect.Option value="cat10">类目十</TagSelect.Option>
-                      <TagSelect.Option value="cat11">类目十一</TagSelect.Option>
-                      <TagSelect.Option value="cat12">类目十二</TagSelect.Option>
+                      <TagSelect.Option value="cat1">小程序</TagSelect.Option>
+                      
                     </TagSelect>
                   )}
                 </FormItem>
@@ -181,7 +171,7 @@ export default class CoverCardList extends PureComponent {
                   <Col lg={8} md={10} sm={10} xs={24}>
                     <FormItem
                       {...formItemLayout}
-                      label="作者"
+                      label=""
                     >
                       {getFieldDecorator('author', {})(
                         <Select
@@ -189,7 +179,7 @@ export default class CoverCardList extends PureComponent {
                           placeholder="不限"
                           style={{ maxWidth: 200, width: '100%' }}
                         >
-                          <Option value="lisa">王昭君</Option>
+                          <Option value="lisa">x x x</Option>
                         </Select>
                       )}
                     </FormItem>
@@ -205,8 +195,8 @@ export default class CoverCardList extends PureComponent {
                           placeholder="不限"
                           style={{ maxWidth: 200, width: '100%' }}
                         >
-                          <Option value="good">优秀</Option>
-                          <Option value="normal">普通</Option>
+                          <Option value="good">1</Option>
+                          <Option value="normal">2</Option>
                         </Select>
                       )}
                     </FormItem>

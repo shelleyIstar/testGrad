@@ -20,14 +20,14 @@ const titles = [
   '后台录取通知',
 ];
 const avatars = [
-  'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png', // Alipay
-  'https://gw.alipayobjects.com/zos/rmsportal/zOsKZmFRdUtvpqCImOVY.png', // Angular
-  'https://gw.alipayobjects.com/zos/rmsportal/dURIMkkrRFpPgTuzkwnB.png', // Ant Design
-  'https://gw.alipayobjects.com/zos/rmsportal/sfjbOqnsXXJgNCjCzDBL.png', // Ant Design Pro
-  'https://gw.alipayobjects.com/zos/rmsportal/siCrBXXhmvTQGWPNLBow.png', // Bootstrap
-  'https://gw.alipayobjects.com/zos/rmsportal/kZzEzemZyKLKFsojXItE.png', // React
-  'https://gw.alipayobjects.com/zos/rmsportal/ComBAopevLwENQdKWiIn.png', // Vue
-  'https://gw.alipayobjects.com/zos/rmsportal/nxkuOJlFJuAUhzlMTCEe.png', // Webpack
+  'https://www.zumc.xin/images/logo.png', // Alipay
+  'https://www.zumc.xin/images/logo.png', // Angular
+  'https://www.zumc.xin/images/logo.png', // Ant Design
+  'https://www.zumc.xin/images/logo.png', // Ant Design Pro
+  'https://www.zumc.xin/images/logo.png', // Bootstrap
+  'https://www.zumc.xin/images/logo.png', // React
+  'https://www.zumc.xin/images/logo.png', // Vue
+  'https://www.zumc.xin/images/logo.png', // Webpack
 ];
 
 const avatars2 = [

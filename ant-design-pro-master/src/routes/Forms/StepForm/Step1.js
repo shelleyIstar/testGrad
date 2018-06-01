@@ -68,8 +68,8 @@ export default ({ formItemLayout, form, dispatch, data }) => {
           {getFieldDecorator('amount', {
             initialValue: data.amount || '',
             rules: [
-              { required: true, message: '请输入文章内容' },
-              { pattern: /^(\d+)((?:\.\d+)?)$/, message: '请输入文章内容' },
+              // { required: true, message: '请输入文章内容' },
+              // { pattern: /^(\d+)((?:\.\d+)?)$/, message: '请输入文章内容' },
             ],
           })(
             <Input style={{height:80}} placeholder="请输入文章内容" />
